@@ -13,6 +13,9 @@ def load_data(file_path, table_name, engine):
         df = pd.read_csv(file_path)
         df.to_sql(table_name, engine, if_exists="replace", index=False)
         logging.info(f"Data successfully loaded into {table_name}")
+        print(
+            f"Data loading complete! Check the '{table_name}' table in your database."
+        )
     except Exception as e:
         logging.error(f"Error loading data into {table_name}: {e}")
         raise

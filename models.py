@@ -46,3 +46,4 @@ engine = create_engine(config.DATABASE_URL)
 
 # Create the table in the database based on the model's definition (if it doesn't already exist)
 Base.metadata.create_all(engine)
+print("Table 'listings' created successfully!")

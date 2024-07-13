@@ -2,21 +2,21 @@ import logging
 from metaflow import FlowSpec, step, Parameter
 from sqlalchemy import create_engine, exc
 
-# Import functions from other modules
+# Imported functions from other modules
 from src.extract import extract_data
 from src.transform import transform_data
 from src.load import load_data
 
-# Import configuration settings
+# Imported configuration settings
 import config
 
-# Configure logging to a file
+# Configured logging to a file
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
     handlers=[
         logging.FileHandler("airbnb_etl.log"),  # Log to a file
-        logging.StreamHandler(),  # Log to console as well (optional)
+        logging.StreamHandler(),  # Log to console as well
     ],
 )
 
@@ -51,7 +51,7 @@ class AirbnbETLFlow(FlowSpec):
         """Start the flow and initialize variables."""
         logging.info("Starting Airbnb ETL flow...")
 
-        # Store database connection URL
+        # Storing database connection URL
         self.database_url = config.DATABASE_URL
 
         self.next(self.extract)
@@ -66,7 +66,7 @@ class AirbnbETLFlow(FlowSpec):
         except exc.OperationalError as e:  # Catch connection errors
             logging.error("Database connection error: %s", e)
             raise
-        except Exception as e:  # Catch all other exceptions
+        except Exception as e:  # Catching all other exceptions
             logging.error(f"Data extraction failed: {e}")
             raise
         self.next(self.transform)
@@ -87,7 +87,7 @@ class AirbnbETLFlow(FlowSpec):
         """Load the transformed data into the database."""
         try:
             logging.info(f"Loading data into {self.table_name}...")
-            engine = create_engine(self.database_url)  # Recreate engine
+            engine = create_engine(self.database_url)
             load_data(self.df, self.table_name, engine)
         except Exception as e:
             logging.error(f"Data loading failed: {e}")

@@ -57,7 +57,7 @@ The primary goals of this project are:
 
    ```
    # macOS/Linux
-   ource data_engineer_env/bin/activate
+   source data_engineer_env/bin/activate
 
    # Windows
    .\data_engineer_env\Scripts\activate
@@ -293,3 +293,7 @@ To load the transformed data into a table with a different name than the default
 ```bash
 python airbnb_flow.py run --table-name <your_custom_table_name>
 ```
+
+## Documentation and Demonstration
+
+Head over to the `Documentation and Demonstration` folder in root directory of project to get Detailed Documentation on working of the pipeline and to view the Demo of project.

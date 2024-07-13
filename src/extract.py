@@ -1,36 +1,3 @@
-# import os
-# import pandas as pd
-# from sqlalchemy import create_engine, text
-# from sqlalchemy.orm import sessionmaker
-
-
-# def extract_data(engine):
-#     """
-#     Extracts all data from the 'listings' table in the PostgreSQL database.
-
-#     Args:
-#         engine: SQLAlchemy database engine object.
-
-#     Returns:
-#         pd.DataFrame: The extracted data as a Pandas DataFrame.
-#     """
-#     try:
-#         # Create a session for interacting with the database
-#         Session = sessionmaker(bind=engine)
-#         with Session() as session:
-#             # Construct and execute the query to fetch all data
-#             query = text("SELECT * FROM listings")
-#             result = session.execute(query)
-
-#             # Convert result to DataFrame
-#             df = pd.DataFrame(result.fetchall(), columns=result.keys())
-#             return df
-
-#     except Exception as e:
-#         print(f"Error extracting data: {e}")
-#         return None
-
-
 import os
 import pandas as pd
 from sqlalchemy import create_engine, text
